@@ -3,7 +3,9 @@ package com.example.nycschools
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.nycschools.ui.schoollist.SchoolListFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

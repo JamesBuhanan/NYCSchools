@@ -1,9 +1,10 @@
 package com.example.nycschools.service
 
 import com.example.nycschools.model.School
+import javax.inject.Inject
 
-class SchoolRepository(private val schoolClient: SchoolClient) {
+class SchoolRepository @Inject constructor(private val schoolService: SchoolService) {
     suspend fun getSchoolList(): List<School> {
-        return schoolClient.getSchoolList()
+        return schoolService.getSchoolList()
     }
 }

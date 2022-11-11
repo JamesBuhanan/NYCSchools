@@ -1,3 +1,11 @@
 package com.example.nycschools.model
 
-data class School(val dbn: String)
+import com.squareup.moshi.Json
+
+data class School(
+    val dbn: String,
+    @Json(name = "school_name")
+    val schoolName: String,
+)
+
+

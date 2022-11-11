@@ -16,10 +16,19 @@ class SchoolListViewModel @Inject constructor(
     private val getSchoolList: GetSchoolList
 ) : ViewModel() {
     val schoolList = mutableStateOf<List<School>>(emptyList())
+    val error = mutableStateOf<String?>(null)
 
     init {
         viewModelScope.launch {
-            schoolList.value = getSchoolList()
+            getSchoolList().fold(
+                onSuccess = {
+                    schoolList.value = it
+                    error.value = null
+                },
+                onFailure = {
+                    error.value = it.message
+                }
+            )
         }
     }
 }

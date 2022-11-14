@@ -83,7 +83,7 @@ fun SchoolListItem(
 ) {
     Card(
         border = BorderStroke(2.dp, Color.Black),
-        backgroundColor = Color.Gray,
+        backgroundColor = Color.White,
         modifier = Modifier
             .fillMaxSize()
             .clickable {

@@ -12,5 +12,7 @@ data class SchoolDetail(
     val satMath: String,
     @Json(name = "sat_writing_avg_score")
     val satWriting: String,
+    @Json(name = "num_of_sat_test_takers")
+    val satTakers: String
 
 )

@@ -4,10 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -63,19 +68,40 @@ fun SchoolList(
     }
     LazyColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.background(Color.Black)
     ) {
         items(schools) {
+            SchoolListItem(it, onClick)
+        }
+    }
+}
+
+@Composable
+fun SchoolListItem(
+    school: School,
+    onClick: (String) -> Unit = {}
+) {
+    Card(
+        border = BorderStroke(2.dp, Color.Black),
+        backgroundColor = Color.Gray,
+        modifier = Modifier
+            .fillMaxSize()
+            .clickable {
+                onClick(school.dbn)
+            }
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
-                text = it.schoolName,
+                text = school.schoolName,
                 fontSize = 18.sp,
-                modifier = Modifier
-                    .padding(12.dp)
-                    .clickable {
-                        onClick(it.dbn)
-                    },
                 color = Color.Blue,
                 textAlign = TextAlign.Center,
             )
+            Text(school.primaryAddressLine1)
+            Text(school.city + ", " + school.state)
         }
     }
 }

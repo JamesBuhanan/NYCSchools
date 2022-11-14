@@ -1,20 +1,18 @@
 package com.example.nycschools
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.nycschools.ui.schoollist.SchoolListFragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, SchoolListFragment.newInstance())
-                .commitNow()
-        }
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+        val navController = navHostFragment.navController
+        navController.navigate(R.id.schoolListFragment)
     }
 }

@@ -93,7 +93,8 @@ fun Thing(
             Text(
                 "Average Critical Reading SAT score:",
                 fontSize = 22.sp,
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(8.dp),
+                textAlign = TextAlign.Center,
             )
             Text(
                 "[${it.satReading}]",

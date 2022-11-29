@@ -24,7 +24,7 @@ class SchoolDetailViewModel @Inject constructor(
                     error.value = null
                 },
                 onFailure = {
-                    error.value = it.message
+                    error.value = "                                         No data to retrieve"
                 }
             )
         }
